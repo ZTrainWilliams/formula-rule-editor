@@ -9,7 +9,7 @@
 
 
 
-![](./src/assets/image/formula-rule.jpg)
+![](./src/assets/image/formula-rule-handle.gif)
 
 
 
