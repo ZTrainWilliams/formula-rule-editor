@@ -5,7 +5,7 @@
       <p style="margin: 16px 0">公式规则:</p>
       <div class="content">
         {{ formValue.expressionContent }}
-        <el-button type="" link title="编辑" @click="handleCLick">
+        <el-button type="" link title="编辑" @click="handleClick">
           <el-icon>
             <Edit />
           </el-icon>
@@ -15,7 +15,7 @@
       <div class="content">
         {{ formValue.calcExpression }}
       </div>
-      <el-button type="primary" @click="handleCLick">编辑规则</el-button>
+      <el-button type="primary" @click="handleClick">编辑规则</el-button>
     </div>
     <el-row> </el-row>
     <FormulaRules
@@ -115,10 +115,9 @@ const ruleFieldList = ref([
   },
 ]);
 const formValue = ref({
-  expressionContent: '#主营业务收入#+#材料销售收入#﻿', // 显示公式
+  expressionContent: '#主营业务收入#+#材料销售收入#', // 显示公式
   calcExpression: 'MAIN_BUSINESS_INCOME+MATERIAL_SALES_INCOME', // 实际作用公式
 });
-const ruleValue1 = ref('');
 const formulaRulesRef = ref(null);
 
 const functionList = ref([
@@ -165,7 +164,7 @@ const queryVariable = () => {
   });
 };
 
-const handleCLick = () => {
+const handleClick = () => {
   const values = {
     name: '营业利润',
     code: '',

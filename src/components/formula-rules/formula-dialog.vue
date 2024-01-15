@@ -171,7 +171,7 @@ const fieldClick = (row) => {
 
 /**
  * @description: 操作符-点击插入
- * @param {String} m
+ * @param {String | Object} m
  * @return {*}
  */
 const operatorClick = (m) => {
