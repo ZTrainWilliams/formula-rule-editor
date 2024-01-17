@@ -11,7 +11,7 @@
 
 ![](./src/assets/image/formula-rule-handle.gif)
 
-
+demo： https://ztrainwilliams.github.io/formula-rule-editor/
 
 
 # 业务-公式规则编辑器
