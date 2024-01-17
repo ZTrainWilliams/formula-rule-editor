@@ -1,3 +1,8 @@
+/*
+ * @Author: ZTrainWilliams ztrain1224@163.com
+ * @Date: 2024-01-17 10:24:48
+ * @Description: 
+ */
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path';
@@ -11,4 +16,5 @@ export default defineConfig({
     }
   },
   plugins: [vue()],
+  base: "./",
 })
