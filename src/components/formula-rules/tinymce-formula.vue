@@ -196,7 +196,13 @@ export default defineComponent({
       } else if (type === 'field') {
         editor.insertContent(`<span class="mention-${type}" contenteditable="false">${`#${value}#`}</span>`);
       } else {
-        editor.insertContent(value);
+        if (Object.prototype.toString.call(value) === '[object Array]') {
+          for (let i = 0; i < value.length; i++) {
+            editor.insertContent(value[i]);
+          }
+        } else {
+          editor.insertContent(value);
+        }
         offset && selectionSetRng(offsetIdx);
       }
       initInstanceCallback();
