@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <!-- <el-aside width="200px"><Sidebar /></el-aside> -->
+    <el-aside width="150px"><Sidebar /></el-aside>
     <el-container>
       <el-header>
         <div class="user-info" @mouseover="userMenuShow = true" @mouseleave="userMenuShow = false">

@@ -21,6 +21,16 @@ const routes = [
     },
     component: () => import('@/views/home/index.vue'),
   },
+  {
+    path: '/select-tree',
+    name: 'select-tree',
+    meta: {
+      title: '树形选择',
+      keepAlive: true,
+      requireAuth: true,
+    },
+    component: () => import('@/views/select-tree-page/index.vue'),
+  },
 ];
 const router = createRouter({
   history: createWebHashHistory(),
