@@ -26,7 +26,7 @@ demo： https://ztrainwilliams.github.io/formula-rule-editor/
 在使用treeV2(虚拟树形组件，可自行调整未tree组件)，开启check-strictly，自定义全选功能实现
 
 ![](./src/assets/image/select-tree.gif)
-[demo](https://ztrainwilliams.github.io/formula-rule-editor/select-tree)
+[demo](https://ztrainwilliams.github.io/formula-rule-editor/#/select-tree)
 
 [组件treeV2](https://github.com/ZTrainWilliams/formula-rule-editor/tree/master/src/components/treeV2/index.vue)
 [组件select-treeV2](https://github.com/ZTrainWilliams/formula-rule-editor/tree/master/src/components/select-treeV2/index.vue)
