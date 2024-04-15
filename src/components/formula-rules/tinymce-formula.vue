@@ -112,11 +112,13 @@ export default defineComponent({
       const regexText = props.operatorList.map((operator) => `\\${operator.value ?? operator}`).join('');
       const operatorRegex = new RegExp(`([${regexText}])`);
       const operatorSplitRegex = new RegExp(`([${regexText}])`);
-
       childNodes.forEach((p) => {
-        p.childNodes.forEach((element) => {
+        for (let i = 0; i < p.childNodes.length; i += 1) {
+          const element = p.childNodes[i];
           const classText = element.nodeType === 1 && element?.getAttribute ? element?.getAttribute('class') : '';
+          const selectedClass = element?.getAttribute ? element?.getAttribute('data-mce-selected') : '';
           const value = element.textContent;
+          if (selectedClass) continue; // 存在隐藏选中项，不获取
           if (element.nodeType === 3) {
             if (value !== '') {
               calcList.push({
@@ -154,7 +156,7 @@ export default defineComponent({
               value,
             });
           }
-        });
+        }
       });
       emit('changeHtmlContent', val);
       emit('change', calcList);
@@ -168,7 +170,7 @@ export default defineComponent({
     const initInstanceCallback = () => {
       const editor = window.tinyMCE.editors[curId.value];
       // 注册内容变更事件的回调函数
-      editor.on('change', (val) => {
+      editor.on('change input undo redo', (val) => {
         // 在内容变更时执行的逻辑
         contentChange(val);
       });

@@ -222,7 +222,7 @@ const contendEditChange = (l) => {
   });
   formValues.value = {
     expressionContent,
-    calcExpression: calcExpression.replace(/[\u200B-\u200D\uFEFF]/g, ''), // 替换不可见字符; /[\u200B-\u200D\uFEFF]/g 匹配了常见的不可见字符范围，包括左至右标记、零宽度空格和特殊的字节顺序标记
+    calcExpression: calcExpression.replace(/[\u200B-\u200D\uFEFF\s]/g, ''), // 替换不可见字符、及空格; /[\u200B-\u200D\uFEFF]/g 匹配了常见的不可见字符范围，包括左至右标记、零宽度空格和特殊的字节顺序标记
     calcList,
   };
 
