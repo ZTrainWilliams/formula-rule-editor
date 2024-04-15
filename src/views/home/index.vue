@@ -30,6 +30,7 @@
 import { ref } from 'vue';
 import FormulaRules from '@/components/formula-rules/formula-dialog.vue';
 import { Edit } from '@element-plus/icons-vue';
+import { Parser } from 'expr-eval/dist/bundle.min.js';
 
 // 引用字段
 const ruleFieldList = ref([
@@ -141,20 +142,35 @@ const functionList = ref([
   },
 ]);
 
-// 后端校验规则公式接口,模拟
+const parser = new Parser();
+
+// using expr-eval validate; Or through interface verification
 const checkRule = (pramas) => {
   return new Promise((resolve, reject) => {
-    if (!['+', '-', '*', '/'].includes(pramas.calcList[pramas.calcList.length - 1].value)) {
+    pramas.calcList.forEach((o) => {
+      if (o.type === 'field') {
+        parser.consts[o.value] = 1;
+      }
+    });
+    const result = parser.evaluate(pramas.calcExpression); // evaluate
+    if (result !== null || result === undefined) {
       resolve({
         success: true,
         message: '公式校验通过',
       });
-    } else {
-      resolve({
-        success: false,
-        message: '公式校验不通过',
-      });
     }
+    return result;
+    // if (!['+', '-', '*', '/'].includes(pramas.calcList[pramas.calcList.length - 1].value)) {
+    //   resolve({
+    //     success: true,
+    //     message: '公式校验通过',
+    //   });
+    // } else {
+    //   resolve({
+    //     success: false,
+    //     message: '公式校验不通过',
+    //   });
+    // }
   });
 };
 

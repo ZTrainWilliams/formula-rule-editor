@@ -3,9 +3,11 @@
 
 > ## formula-rules-editor, base Tinymce Editor
 > 
-> ## if you feel nice this component, gave me a star, thanks！
+> ## if you think this component is nice, give me a star, thanks！
 > 
 > template: Vite + Vue3 + Element-plus 
+> 
+> validate: expr-eval
 
 
 

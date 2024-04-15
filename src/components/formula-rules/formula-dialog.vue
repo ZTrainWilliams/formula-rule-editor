@@ -260,7 +260,6 @@ const handleCheck = () => {
             expressionContent: formValues.value.expressionContent,
           })
           .then((res) => {
-            console.log('res', res);
             if (res?.success) {
               resolve();
               isChecked.value = 1;
@@ -271,7 +270,8 @@ const handleCheck = () => {
             }
             checkLoading.value = false;
           })
-          .catch(() => {
+          .catch((err) => {
+            console.log('err', err);
             isChecked.value = 0;
             checkLoading.value = false;
             reject(checkedTip.value);
