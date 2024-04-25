@@ -31,6 +31,14 @@ const routes = [
     },
     component: () => import('@/views/select-tree-page/index.vue'),
   },
+  {
+    path: '/canvas-animation',
+    name: 'canvas-animation',
+    meta: {
+      title: 'canvas-animation',
+    },
+    component: () => import('@/views/canvas-animation/index.vue'),
+  },
 ];
 const router = createRouter({
   history: createWebHashHistory(),

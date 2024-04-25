@@ -7,6 +7,9 @@
     <el-menu-item index="/select-tree">
       <template #title><i class="el-icon-s-help"></i>select-tree</template>
     </el-menu-item>
+    <el-menu-item index="/canvas-animation">
+      <template #title><i class="el-icon-s-help"></i>canvas-animation</template>
+    </el-menu-item>
   </el-menu>
 </template>
 <script>
@@ -38,7 +41,6 @@ export default defineComponent({
 }
 .el-menu {
   height: 100%;
-  background: #d3dce6;
-  border-right: 0;
+  border-color: #d3dce6;
 }
 </style>
