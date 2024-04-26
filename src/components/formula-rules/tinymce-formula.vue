@@ -101,7 +101,7 @@ export default defineComponent({
      * @description: 处理富文本内容，回调公式节点数组、文本
      * @return {*}
      */
-    const contentChange = (val) => {
+     const contentChange = (val) => {
       const editor = window.tinyMCE?.editors[curId.value]; // 富文本实例
       if (!editor) return;
       const tempContainer = editor.getBody(); // 富文本节点内容
@@ -112,6 +112,7 @@ export default defineComponent({
       const regexText = props.operatorList.map((operator) => `\\${operator.value ?? operator}`).join('');
       const operatorRegex = new RegExp(`([${regexText}])`);
       const operatorSplitRegex = new RegExp(`([${regexText}])`);
+
       childNodes.forEach((p) => {
         for (let i = 0; i < p.childNodes.length; i += 1) {
           const element = p.childNodes[i];
@@ -123,7 +124,7 @@ export default defineComponent({
             if (value !== '') {
               calcList.push({
                 type: 'text',
-                value,
+                value: replaceSpance(value),
               });
             }
           } else if (classText && classText.indexOf('mention-field') !== -1) {
@@ -137,23 +138,16 @@ export default defineComponent({
             const operatorSplits = value.split(operatorRegex);
             operatorSplits.forEach((v) => {
               if (v !== '') {
-                if (operatorSplitRegex.test(v)) {
-                  calcList.push({
-                    type: 'operator',
-                    value: v,
-                  });
-                } else {
-                  calcList.push({
-                    type: 'text',
-                    value: v,
-                  });
-                }
+                calcList.push({
+                  type: operatorSplitRegex.test(v) ? 'operator' : 'text',
+                  value: replaceSpance(v),
+                });
               }
             });
           } else {
             calcList.push({
               type: 'text',
-              value,
+              value: replaceSpance(value), // 多个空格则压缩
             });
           }
         }
@@ -161,6 +155,10 @@ export default defineComponent({
       emit('changeHtmlContent', val);
       emit('change', calcList);
       emit('input:modelValue', text);
+    };
+
+    const replaceSpance = (value) => {
+      return value.replace(/\s+/g, ' '); // 多个空格则压缩
     };
 
     /**
