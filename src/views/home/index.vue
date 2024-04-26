@@ -125,20 +125,34 @@ const functionList = ref([
   {
     label: 'AND',
     value: 'AND',
+    fn: '==',
     offsetIdx: 0,
   },
   {
     label: 'OR',
     value: 'OR',
+    fn: '||',
     offsetIdx: 0,
   },
   {
     label: 'IF',
     value: ['IF(', ')'],
+    fn: (v) => {
+      if(v) {
+        return v
+      }
+      return ''
+    }
   },
   {
     label: 'HALT',
     value: ['HALT("', '", , )'],
+    fn: (v) => {
+      if(v) {
+        return v
+      }
+      return ''
+    }
   },
 ]);
 
