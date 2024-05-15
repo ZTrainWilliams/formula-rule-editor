@@ -10,6 +10,9 @@
     <el-menu-item index="/canvas-animation">
       <template #title><i class="el-icon-s-help"></i>canvas-animation</template>
     </el-menu-item>
+    <el-menu-item index="/hm-time-picker">
+      <template #title><i class="el-icon-s-help"></i>hm-time-picker</template>
+    </el-menu-item>
   </el-menu>
 </template>
 <script>

@@ -39,6 +39,14 @@ const routes = [
     },
     component: () => import('@/views/canvas-animation/index.vue'),
   },
+  {
+    path: '/hm-time-picker',
+    name: 'hm-time-picker',
+    meta: {
+      title: 'hm-time-picker',
+    },
+    component: () => import('@/views/hm-time-picker/index.vue'),
+  },
 ];
 const router = createRouter({
   history: createWebHashHistory(),

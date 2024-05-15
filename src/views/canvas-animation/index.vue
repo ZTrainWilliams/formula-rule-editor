@@ -11,13 +11,15 @@ import { setNebulaCanvas, setStarryCanvas } from '@/canvas/utils.js';
 
 const selectValue = ref('setNebulaCanvas');
 
-const slectChange = (value) => {
+const slectChange = (value) =>{
   switch (value) {
     case 'setNebulaCanvas':
       setNebulaCanvas();
       break;
     case 'setStarryCanvas':
       setStarryCanvas();
+      break;
+    default:
       break;
   }
 };
