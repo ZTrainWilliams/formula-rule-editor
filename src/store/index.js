@@ -8,6 +8,7 @@ export const store = createStore({
         username: '',
         nickname: '',
       },
+      screenIsFull: false,
     };
   },
   mutations: {
