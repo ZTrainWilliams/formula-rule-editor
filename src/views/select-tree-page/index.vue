@@ -27,13 +27,26 @@
         {{ selectTreeValue }}
       </div>
     </el-collapse-item>
+    <el-collapse-item title="TreeSelectInclude（是否包含子集的参数isInclude，用于后端区分筛选状态，可减少数据传递）" name="TreeSelectInclude">
+      <div>
+        {{ treeSelectIncludeValue }}
+      </div>
+      <div>
+        <TreeSelectInclude
+          v-model="treeSelectIncludeValue.treeSelectValue"
+          :data="treeData"
+          v-model:isInclude="treeSelectIncludeValue.isInclude"
+        ></TreeSelectInclude>
+      </div>
+    </el-collapse-item>
   </el-collapse>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 import treeV2 from '@/components/treeV2/index.vue';
 import SelectTreeV2 from '@/components/select-treeV2/index.vue';
+import TreeSelectInclude from '@/components/tree-select-include-subsets/index.vue';
 
 const activeName = ref(['treeV2', 'selectTreeV2']);
 const treeValue = ref([]);
@@ -128,6 +141,12 @@ const treeData = ref([
     ],
   },
 ]);
+
+// const treeSelectIncludeProps = ref({})
+const treeSelectIncludeValue = reactive({
+  treeSelectValue: '',
+  isInclude: 0, // 0 不包含子集，1 包含子集
+});
 </script>
 
 <style scoped></style>
