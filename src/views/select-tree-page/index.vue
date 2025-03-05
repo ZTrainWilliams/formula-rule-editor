@@ -7,36 +7,48 @@
   <el-collapse v-model="activeName" accordion>
     <el-collapse-item title="treeV2" name="treeV2">
       <div>
-        <treeV2
-          v-model="treeValue"
-          :data="treeData"
-          :check-strictly="true"
-          :showCheckbox="true"
-          style="min-width: 200px"
-        ></treeV2>
-      </div>
-      <div>
-        {{ treeValue }}
+        <p>内容介绍：这是一个支持多选、单选的树组件，使用 check-strictly 可以取消父子节点的关联选择。</p>
+        <el-row type="flex">
+          <span>结果展示：</span>
+          {{ treeValue }}
+        </el-row>
+        <div>
+          <treeV2
+            v-model="treeValue"
+            :data="treeData"
+            :check-strictly="true"
+            :showCheckbox="true"
+            style="min-width: 200px"
+          ></treeV2>
+        </div>
       </div>
     </el-collapse-item>
     <el-collapse-item title="selectTreeV2" name="SelectTreeV2">
       <div>
-        <SelectTreeV2 v-model="selectTreeValue" :data="treeData" :props="treeProps"></SelectTreeV2>
-      </div>
-      <div>
-        {{ selectTreeValue }}
+        <p>内容介绍：这是一个支持多选、单选的树形下拉组件。</p>
+        <el-row type="flex">
+          <span>结果展示：</span>
+          {{ selectTreeValue }}
+        </el-row>
+        <div>
+          <SelectTreeV2 v-model="selectTreeValue" :data="treeData" :props="treeProps"></SelectTreeV2>
+        </div>
       </div>
     </el-collapse-item>
-    <el-collapse-item title="TreeSelectInclude（是否包含子集的参数isInclude，用于后端区分筛选状态，可减少数据传递）" name="TreeSelectInclude">
+    <el-collapse-item title="TreeSelectInclude" name="TreeSelectInclude">
       <div>
-        {{ treeSelectIncludeValue }}
-      </div>
-      <div>
-        <TreeSelectInclude
-          v-model="treeSelectIncludeValue.treeSelectValue"
-          :data="treeData"
-          v-model:isInclude="treeSelectIncludeValue.isInclude"
-        ></TreeSelectInclude>
+        <p>内容介绍：这是一个支持选择是否包含子集的树组件，通过 isInclude 参数可以控制后端筛选状态。</p>
+        <el-row type="flex">
+          <span>结果展示：</span>
+          {{ treeSelectIncludeValue }}
+        </el-row>
+        <div>
+          <TreeSelectInclude
+            v-model="treeSelectIncludeValue.treeSelectValue"
+            :data="treeData"
+            v-model:isInclude="treeSelectIncludeValue.isInclude"
+          ></TreeSelectInclude>
+        </div>
       </div>
     </el-collapse-item>
   </el-collapse>
@@ -48,7 +60,8 @@ import treeV2 from '@/components/treeV2/index.vue';
 import SelectTreeV2 from '@/components/select-treeV2/index.vue';
 import TreeSelectInclude from '@/components/tree-select-include-subsets/index.vue';
 
-const activeName = ref(['treeV2', 'selectTreeV2']);
+// 默认展开所有 collapse
+const activeName = ref(['treeV2', 'SelectTreeV2', 'TreeSelectInclude']);
 const treeValue = ref([]);
 const treeProps = ref({
   label: 'title',
@@ -149,4 +162,8 @@ const treeSelectIncludeValue = reactive({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+p{
+  padding: 8px 0;
+}
+</style>
