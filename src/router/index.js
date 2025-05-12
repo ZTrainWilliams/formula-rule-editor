@@ -47,6 +47,14 @@ const routes = [
     },
     component: () => import('@/views/hm-time-picker/index.vue'),
   },
+  {
+    path: '/three-points',
+    name: 'three-points',
+    meta: {
+      title: 'three-points',
+    },
+    component: () => import('@/views/three-points/index.vue'),
+  },
 ];
 const router = createRouter({
   history: createWebHashHistory(),
