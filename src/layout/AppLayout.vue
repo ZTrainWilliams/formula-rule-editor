@@ -1,8 +1,8 @@
 <template>
-  <el-container>
-    <el-aside width="150px"><Sidebar /></el-aside>
-    <el-container>
-      <el-header>
+  <el-container class="app-layout">
+    <el-aside class="app-aside" width="200px"><Sidebar /></el-aside>
+    <el-container class="app-main">
+      <el-header class="app-header">
         <div class="user-info" @mouseover="userMenuShow = true" @mouseleave="userMenuShow = false">
           <img src="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png" alt="avatar" />user
           <div v-show="userMenuShow" class="user-menu">
@@ -10,7 +10,7 @@
           </div>
         </div>
       </el-header>
-      <el-main><RouterView /></el-main>
+      <el-main class="app-content"><RouterView /></el-main>
     </el-container>
   </el-container>
 </template>
@@ -46,59 +46,83 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.el-container {
-  height: 100vh; /* 占满整个视口高度 */
+.app-layout {
+  height: 100vh;
+  background: #ffffff;
 }
 
-.el-aside {
-  background-color: #304156; /* 侧边栏背景色 */
-  color: white;
+.app-aside {
+  background: #2c3e50;
+  color: #ecf0f1;
+  border-right: 1px solid #bdc3c7;
 }
 
-.el-header {
+.app-header {
   height: 60px;
-  line-height: 60px;
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  padding: 0 24px;
   display: flex;
-  flex-direction: row-reverse;
-  background-color: #304156; /* 顶部栏背景色 */
-  color: white;
+  align-items: center;
+  justify-content: flex-end;
+  background: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
   .user-info {
     position: relative;
     display: flex;
     align-items: center;
-    margin-right: 100px;
+    height: 40px;
+    border-radius: 8px;
     cursor: pointer;
     padding: 0 12px;
+    color: #2c3e50;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    
     img {
       margin-right: 10px;
-      width: 24px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid #3498db;
     }
+    
     .user-menu {
-      width: 100%;
+      min-width: 140px;
       position: absolute;
-      padding: 10px 0;
-      left: 0;
-      top: 60px;
+      padding: 8px 0;
+      right: 0;
+      top: calc(100% + 10px);
       text-align: center;
       font-size: 14px;
-      background: #fff;
-      border: 1px solid #e4e7ed;
-      box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
       line-height: 36px;
-      color: #304156;
-      .user-menu-item:hover {
-        background-color: #ecf5ff;
-        color: #66b1ff;
+      color: #2c3e50;
+      z-index: 1000;
+      
+      .user-menu-item {
+        transition: background-color 0.2s ease;
+        
+        &:hover {
+          background-color: #f8f9fa;
+          color: #3498db;
+        }
       }
     }
+    
     &:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: #f8f9fa;
+      transform: translateY(-1px);
     }
   }
 }
 
-.el-main {
-  // background-color: #f0f2f5; /* 主内容区域背景色 */
+.app-content {
+  padding: 24px;
+  overflow: auto;
+  background: #fafafa;
 }
 </style>

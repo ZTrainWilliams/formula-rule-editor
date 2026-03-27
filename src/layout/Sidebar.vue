@@ -43,17 +43,25 @@ export default defineComponent({
 <style lang="scss" scoped>
 .el-menu {
   height: 100%;
-  border: none; /* 去除边框 */
-  background-color: #304156; /* 侧边栏菜单背景色 */
-  color: white;
-  padding: 60px 0 0 0;
+  border: none;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 70px 0 0 0;
+  
   .el-menu-item {
-    color: white;
+    color: #ecf0f1;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    
     &:hover {
-      background-color: rgba(255, 255, 255, 0.1); /* 鼠标悬停背景色 */
+      background-color: rgba(52, 152, 219, 0.2);
+      color: #3498db;
     }
+    
     &.is-active {
-      background-color: #409eff; /* 激活项背景色 */
+      background-color: #3498db;
+      color: #ffffff;
     }
   }
 }

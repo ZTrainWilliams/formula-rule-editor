@@ -25,7 +25,7 @@ export default defineComponent({
   props: {
     modelValue: {
       type: String,
-      defualt: '',
+      default: '',
     },
     // 富文本id
     id: {

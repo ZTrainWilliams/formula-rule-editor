@@ -96,7 +96,7 @@ const prop = defineProps({
   request: Object,
   title: {
     type: String,
-    title: '编辑公式规则',
+    default: '编辑公式规则',
   },
 });
 const emit = defineEmits(['onClose']);
